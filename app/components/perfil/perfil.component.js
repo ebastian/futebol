@@ -14,7 +14,7 @@ var PerfilComponent = (function () {
     }
     PerfilComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>Perfil</h3>\n  "
+            template: "\n    <h3>Perfil</h3>\n    <div class=\"container\">\n      <div class=\"form-signin\">\n        <div class=\"form-group\">\n          <label for=\"inputName\">Nome</label>\n          <input id=\"inputName\" class=\"form-control\" placeholder=\"nome\" required=\"\" autofocus=\"\">\n        </div>\n        <div class=\"form-group\">\n          <label for=\"inputEmail\">E-mail</label>\n          <input id=\"inputEmail\" class=\"form-control\" placeholder=\"usu\u00E1rio\" required=\"\" autofocus=\"\" type=\"email\">\n        </div>\n        <div class=\"form-group\">\n          <label for=\"inputPassword\">Senha</label>\n          <input id=\"inputPassword\" class=\"form-control\" placeholder=\"senha\" required=\"\" type=\"password\">\n        </div>\n        <div class=\"form-group\">\n          <button class=\"btn\" type=\"button\">Salvar</button>\n          <button class=\"btn\" type=\"button\">Cancelar</button>\n        </div>\n      </div>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], PerfilComponent);

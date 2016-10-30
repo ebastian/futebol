@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var team_service_1 = require('../../services/team.service');
-var TeamsComponent = (function () {
-    function TeamsComponent(teamService) {
-        this.teamService = teamService;
+var place_service_1 = require('../../services/place.service');
+var PlacesComponent = (function () {
+    function PlacesComponent(placeService) {
+        this.placeService = placeService;
         this.columns = [
             {
                 field: "id",
@@ -23,32 +23,32 @@ var TeamsComponent = (function () {
                 description: "Nome"
             },
             {
-                field: "description",
-                description: "Descrição"
+                field: "address",
+                description: "Endereço"
             },
             {
-                field: "players",
-                description: "Jogadores"
+                field: "price",
+                description: "Preço"
             }
         ];
     }
-    TeamsComponent.prototype.ngOnInit = function () {
-        this.getTeams();
+    PlacesComponent.prototype.ngOnInit = function () {
+        this.getPlaces();
     };
-    TeamsComponent.prototype.getTeams = function () {
+    PlacesComponent.prototype.getPlaces = function () {
         var _this = this;
-        this.teamService.getTeams().then(function (teams) { return _this.teams = teams; });
+        this.placeService.getPlaces().then(function (places) { return _this.places = places; });
     };
-    TeamsComponent = __decorate([
+    PlacesComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Times'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"teams\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-header [title]=\"'Estabelecimentos'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"places\"></eb-registry-list>\n  ",
             providers: [
-                team_service_1.TeamService
+                place_service_1.PlaceService
             ]
         }), 
-        __metadata('design:paramtypes', [team_service_1.TeamService])
-    ], TeamsComponent);
-    return TeamsComponent;
+        __metadata('design:paramtypes', [place_service_1.PlaceService])
+    ], PlacesComponent);
+    return PlacesComponent;
 }());
-exports.TeamsComponent = TeamsComponent;
-//# sourceMappingURL=teams.component.js.map
+exports.PlacesComponent = PlacesComponent;
+//# sourceMappingURL=places.component.js.map

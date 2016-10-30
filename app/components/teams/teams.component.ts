@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Team } from '../../entities/Team';
+import { Team } from '../../entities/team';
 import { TeamService } from '../../services/team.service';
 
 @Component({
   template: `
-    <h3>Times</h3>
-    <eb-registry-list (dataProvider)="teams"></eb-registry-list>
+    <eb-list-header [title]="'Times'"></eb-list-header>
+    <eb-registry-list [columns]="columns" [data]="teams"></eb-registry-list>
   `,
   providers: [
     TeamService
@@ -16,6 +16,25 @@ import { TeamService } from '../../services/team.service';
 export class TeamsComponent implements OnInit {
 
   teams: Team[];
+
+  columns = [
+    {
+      field: "id",
+      description: "Id"
+    },
+    {
+      field: "name",
+      description: "Nome"
+    },
+    {
+      field: "description",
+      description: "Descrição"
+    },
+    {
+      field: "players",
+      description: "Jogadores"
+    }
+  ];
 
   constructor(
     private teamService:TeamService

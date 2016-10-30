@@ -6,6 +6,7 @@ import { PerfilComponent }   from '../components/perfil/perfil.component';
 import { TeamsComponent }   from '../components/teams/teams.component';
 import { GamesComponent }   from '../components/games/games.component';
 import { PlayersComponent }   from '../components/players/players.component';
+import { PlacesComponent }   from '../components/places/places.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
     path: 'players',
     component: PlayersComponent
   },
+  {
+    path: 'places',
+    component: PlacesComponent
+  }
 ];
 
 @NgModule({

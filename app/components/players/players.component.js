@@ -9,14 +9,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var player_service_1 = require('../../services/player.service');
 var PlayersComponent = (function () {
-    function PlayersComponent() {
+    function PlayersComponent(playerService) {
+        this.playerService = playerService;
+        this.columns = [
+            {
+                field: "id",
+                description: "Id"
+            },
+            {
+                field: "name",
+                description: "Nome"
+            },
+            {
+                field: "email",
+                description: "E-mail"
+            },
+            {
+                field: "rating",
+                description: "Rating"
+            }
+        ];
     }
+    PlayersComponent.prototype.ngOnInit = function () {
+        this.getPlayers();
+    };
+    PlayersComponent.prototype.getPlayers = function () {
+        var _this = this;
+        this.playerService.getPlayers().then(function (players) { return _this.players = players; });
+    };
     PlayersComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>Jogadores</h3>\n    <eb-registry-list></eb-registry-list>\n  "
+            template: "\n    <eb-list-header [title]=\"'Jogadores'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"players\"></eb-registry-list>\n  ",
+            providers: [
+                player_service_1.PlayerService
+            ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [player_service_1.PlayerService])
     ], PlayersComponent);
     return PlayersComponent;
 }());

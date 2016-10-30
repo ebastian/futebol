@@ -8,43 +8,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var app_routing_module_1 = require('./routing/app-routing.module');
-var eb_nav_component_1 = require('./shared/nav/eb-nav.component');
-var eb_registry_list_component_1 = require('./shared/registrylist/eb-registry-list.component');
-var timeline_component_1 = require('./components/timeline/timeline.component');
-var perfil_component_1 = require('./components/perfil/perfil.component');
-var teams_component_1 = require('./components/teams/teams.component');
-var games_component_1 = require('./components/games/games.component');
-var players_component_1 = require('./components/players/players.component');
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var app_component_1 = require("./app.component");
+var app_routing_module_1 = require("./routing/app-routing.module");
+var eb_nav_component_1 = require("./shared/nav/eb-nav.component");
+var registry_list_component_1 = require("./shared/registrylist/registry-list.component");
+var list_header_component_1 = require("./shared/registrylist/list-header.component");
+var timeline_component_1 = require("./components/timeline/timeline.component");
+var perfil_component_1 = require("./components/perfil/perfil.component");
+var teams_component_1 = require("./components/teams/teams.component");
+var games_component_1 = require("./components/games/games.component");
+var players_component_1 = require("./components/players/players.component");
+var places_component_1 = require("./components/places/places.component");
 var AppModule = (function () {
     function AppModule() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                platform_browser_1.BrowserModule,
-                app_routing_module_1.AppRoutingModule
-            ],
-            declarations: [
-                app_component_1.AppComponent,
-                eb_nav_component_1.NavComponent,
-                eb_registry_list_component_1.RegistryListComponent,
-                timeline_component_1.TimelineComponent,
-                perfil_component_1.PerfilComponent,
-                teams_component_1.TeamsComponent,
-                games_component_1.GamesComponent,
-                players_component_1.PlayersComponent
-            ],
-            bootstrap: [
-                app_component_1.AppComponent
-            ]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
     return AppModule;
 }());
+AppModule = __decorate([
+    core_1.NgModule({
+        imports: [
+            platform_browser_1.BrowserModule,
+            app_routing_module_1.AppRoutingModule
+        ],
+        declarations: [
+            app_component_1.AppComponent,
+            eb_nav_component_1.NavComponent,
+            registry_list_component_1.RegistryListComponent,
+            list_header_component_1.ListHeaderComponent,
+            timeline_component_1.TimelineComponent,
+            perfil_component_1.PerfilComponent,
+            teams_component_1.TeamsComponent,
+            games_component_1.GamesComponent,
+            players_component_1.PlayersComponent,
+            places_component_1.PlacesComponent
+        ],
+        bootstrap: [
+            app_component_1.AppComponent
+        ]
+    }),
+    __metadata("design:paramtypes", [])
+], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

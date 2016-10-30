@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var player_mock_1 = require('./player.mock');
+var PlayerService = (function () {
+    function PlayerService() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n    <eb-nav></eb-nav>\n    <div class=\"container\">\n      <router-outlet></router-outlet>\n    </div>\n  "
-        }), 
+    PlayerService.prototype.getPlayers = function () {
+        return Promise.resolve(player_mock_1.PLAYERS);
+    };
+    PlayerService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], PlayerService);
+    return PlayerService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.PlayerService = PlayerService;
+//# sourceMappingURL=player.service.js.map

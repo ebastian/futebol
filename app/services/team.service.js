@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var team_mock_1 = require('./team.mock');
+var TeamService = (function () {
+    function TeamService() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n    <eb-nav></eb-nav>\n    <div class=\"container\">\n      <router-outlet></router-outlet>\n    </div>\n  "
-        }), 
+    TeamService.prototype.getTeams = function () {
+        return Promise.resolve(team_mock_1.TEAMS);
+    };
+    TeamService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], TeamService);
+    return TeamService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.TeamService = TeamService;
+//# sourceMappingURL=team.service.js.map

@@ -9,14 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var team_service_1 = require('../../services/team.service');
 var TeamsComponent = (function () {
-    function TeamsComponent() {
+    function TeamsComponent(teamService) {
+        this.teamService = teamService;
     }
+    TeamsComponent.prototype.ngOnInit = function () {
+        this.getTeams();
+    };
+    TeamsComponent.prototype.getTeams = function () {
+        var _this = this;
+        this.teamService.getTeams().then(function (teams) { return _this.teams = teams; });
+    };
     TeamsComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>Times</h3>\n  "
+            template: "\n    <h3>Times</h3>\n    <eb-registry-list (dataProvider)=\"teams\"></eb-registry-list>\n  ",
+            providers: [
+                team_service_1.TeamService
+            ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [team_service_1.TeamService])
     ], TeamsComponent);
     return TeamsComponent;
 }());

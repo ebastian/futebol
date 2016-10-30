@@ -14,6 +14,7 @@ var timeline_component_1 = require('../components/timeline/timeline.component');
 var perfil_component_1 = require('../components/perfil/perfil.component');
 var teams_component_1 = require('../components/teams/teams.component');
 var games_component_1 = require('../components/games/games.component');
+var players_component_1 = require('../components/players/players.component');
 var routes = [
     {
         path: '',
@@ -35,7 +36,11 @@ var routes = [
     {
         path: 'games',
         component: games_component_1.GamesComponent
-    }
+    },
+    {
+        path: 'players',
+        component: players_component_1.PlayersComponent
+    },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

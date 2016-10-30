@@ -11,12 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
-var eb_nav_component_1 = require('./shared/nav/eb-nav.component');
 var app_routing_module_1 = require('./routing/app-routing.module');
+var eb_nav_component_1 = require('./shared/nav/eb-nav.component');
+var eb_registry_list_component_1 = require('./shared/registrylist/eb-registry-list.component');
 var timeline_component_1 = require('./components/timeline/timeline.component');
 var perfil_component_1 = require('./components/perfil/perfil.component');
 var teams_component_1 = require('./components/teams/teams.component');
 var games_component_1 = require('./components/games/games.component');
+var players_component_1 = require('./components/players/players.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,10 +31,12 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 eb_nav_component_1.NavComponent,
+                eb_registry_list_component_1.RegistryListComponent,
                 timeline_component_1.TimelineComponent,
                 perfil_component_1.PerfilComponent,
                 teams_component_1.TeamsComponent,
-                games_component_1.GamesComponent
+                games_component_1.GamesComponent,
+                players_component_1.PlayersComponent
             ],
             bootstrap: [
                 app_component_1.AppComponent

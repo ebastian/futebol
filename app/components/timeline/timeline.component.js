@@ -38,7 +38,7 @@ var TimelineComponent = (function () {
     };
     TimelineComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>Timeline</h3>\n    <div class=\"container\">\n      <div class=\"list-group\">\n        <div *ngFor=\"let post of posts\" class=\"list-group-item\">\n          <div class=\"media-left\">\n            <img class=\"media-object user-thumbnail\" src=\"{{post.avatar}}\" alt=\"...\">\n          </div>\n          <div class=\"media-body\">\n            <h4 class=\"media-heading\">{{post.user}}</h4>\n            {{post.text}}\n          </div>\n        </div>\n      </div>\n    </div>\n  "
+            template: "\n    <h3>Timeline</h3>\n    <div class=\"container\">\n      <div class=\"list-group\">\n        <div *ngFor=\"let post of posts\" class=\"list-group-item\">\n          <div class=\"media-left\">\n            <img class=\"media-object user-thumbnail\" src=\"{{post.avatar}}\" alt=\"...\">\n          </div>\n          <div class=\"media-body\">s\n            <h4 class=\"media-heading\">{{post.user}}</h4>\n            {{post.text}}\n          </div>\n        </div>\n      </div>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], TimelineComponent);

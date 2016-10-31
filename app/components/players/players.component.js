@@ -41,7 +41,7 @@ var PlayersComponent = (function () {
     };
     PlayersComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Jogadores'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"players\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-header [title]=\"'Jogadores'\" [formpath]=\"'player'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"players\"></eb-registry-list>\n  ",
             providers: [
                 player_service_1.PlayerService
             ]

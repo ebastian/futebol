@@ -41,7 +41,7 @@ var TeamsComponent = (function () {
     };
     TeamsComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Times'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"teams\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-header [title]=\"'Times'\" [formpath]=\"'team'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"teams\"></eb-registry-list>\n  ",
             providers: [
                 team_service_1.TeamService
             ]

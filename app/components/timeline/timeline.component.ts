@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
           <div class="media-left">
             <img class="media-object user-thumbnail" src="{{post.avatar}}" alt="...">
           </div>
-          <div class="media-body">
+          <div class="media-body">s
             <h4 class="media-heading">{{post.user}}</h4>
             {{post.text}}
           </div>

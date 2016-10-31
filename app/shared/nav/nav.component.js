@@ -22,4 +22,4 @@ var NavComponent = (function () {
     return NavComponent;
 }());
 exports.NavComponent = NavComponent;
-//# sourceMappingURL=eb-nav.component.js.map
+//# sourceMappingURL=nav.component.js.map

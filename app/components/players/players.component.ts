@@ -5,7 +5,7 @@ import { PlayerService } from '../../services/player.service';
 
 @Component({
   template: `
-    <eb-list-header [title]="'Jogadores'"></eb-list-header>
+    <eb-list-header [title]="'Jogadores'" [formpath]="'player'"></eb-list-header>
     <eb-registry-list [columns]="columns" [data]="players"></eb-registry-list>
   `,
   providers: [
@@ -38,9 +38,7 @@ export class PlayersComponent implements OnInit {
 
   constructor(
     private playerService:PlayerService
-  ) {
-
-  }
+  ) { }
 
   ngOnInit():void {
     this.getPlayers();

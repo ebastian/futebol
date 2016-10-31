@@ -5,7 +5,7 @@ import { PlaceService } from '../../services/place.service';
 
 @Component({
   template: `
-    <eb-list-header [title]="'Estabelecimentos'"></eb-list-header>
+    <eb-list-header [title]="'Estabelecimentos'" [formpath]="'place'"></eb-list-header>
     <eb-registry-list [columns]="columns" [data]="places"></eb-registry-list>
   `,
   providers: [

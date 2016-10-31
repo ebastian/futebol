@@ -41,7 +41,7 @@ var PlacesComponent = (function () {
     };
     PlacesComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Estabelecimentos'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"places\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-header [title]=\"'Estabelecimentos'\" [formpath]=\"'place'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"places\"></eb-registry-list>\n  ",
             providers: [
                 place_service_1.PlaceService
             ]

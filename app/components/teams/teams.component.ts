@@ -5,7 +5,7 @@ import { TeamService } from '../../services/team.service';
 
 @Component({
   template: `
-    <eb-list-header [title]="'Times'"></eb-list-header>
+    <eb-list-header [title]="'Times'" [formpath]="'team'"></eb-list-header>
     <eb-registry-list [columns]="columns" [data]="teams"></eb-registry-list>
   `,
   providers: [

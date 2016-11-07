@@ -8,7 +8,12 @@ import { Router } from '@angular/router';
       <div class="container-fluid">
         <div class="collapse navbar-collapse">
           <div class="navbar-header">
-            <div class="navbar-brand">{{title}}</div>
+            <div class="navbar-brand">
+              <span *ngIf="registry.id == null || registry.id == undefined">Incluindo</span>
+              <span *ngIf="registry.id !== null && registry.id != undefined">Editando</span>
+              <span>{{title}}</span>
+              <span *ngIf="registry.id !== null && registry.id != undefined">({{registry.id}})</span>
+            </div>
             <div class="navbar-brand" style="width: 50px"></div>
           </div>
           <ul class="nav nav-pills navbar-right">
@@ -25,6 +30,9 @@ export class FormHeaderComponent implements OnInit {
 
   @Input()
   title: string;
+
+  @Input()
+  registry: Object;
 
   @Input()
   listpath: string;

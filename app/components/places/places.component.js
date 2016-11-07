@@ -23,6 +23,10 @@ var PlacesComponent = (function () {
                 description: "Nome"
             },
             {
+                field: "description",
+                description: "Descrição"
+            },
+            {
                 field: "address",
                 description: "Endereço"
             },
@@ -39,9 +43,12 @@ var PlacesComponent = (function () {
         var _this = this;
         this.placeService.getPlaces().then(function (places) { return _this.places = places; });
     };
+    PlacesComponent.prototype.delete = function (id) {
+        this.placeService.remove(id);
+    };
     PlacesComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Estabelecimentos'\" [formpath]=\"'place'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"places\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-screen\n      [title]=\"'Estabelecimentos'\"\n      [columns]=\"columns\"\n      [data]=\"places\"\n      [formpath]=\"'place'\"\n      (onDelete)=\"delete($event)\">\n    </eb-list-screen>\n  ",
             providers: [
                 place_service_1.PlaceService
             ]

@@ -16,8 +16,10 @@ var app_routing_module_1 = require('./routing/app-routing.module');
 var nav_component_1 = require('./shared/nav/nav.component');
 var registry_list_component_1 = require('./shared/registrylist/registry-list.component');
 var list_header_component_1 = require('./shared/registrylist/list-header.component');
+var list_screen_component_1 = require('./shared/registrylist/list-screen.component');
 var registry_form_component_1 = require('./shared/registryform/registry-form.component');
 var form_header_component_1 = require('./shared/registryform/form-header.component');
+var form_screen_component_1 = require('./shared/registryform/form-screen.component');
 var timeline_component_1 = require('./components/timeline/timeline.component');
 var perfil_component_1 = require('./components/perfil/perfil.component');
 var teams_component_1 = require('./components/teams/teams.component');
@@ -43,8 +45,10 @@ var AppModule = (function () {
                 nav_component_1.NavComponent,
                 registry_list_component_1.RegistryListComponent,
                 list_header_component_1.ListHeaderComponent,
+                list_screen_component_1.ListScreenComponent,
                 registry_form_component_1.RegistryFormComponent,
                 form_header_component_1.FormHeaderComponent,
+                form_screen_component_1.FormScreenComponent,
                 timeline_component_1.TimelineComponent,
                 perfil_component_1.PerfilComponent,
                 teams_component_1.TeamsComponent,

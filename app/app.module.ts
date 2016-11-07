@@ -8,8 +8,10 @@ import { AppRoutingModule }   from './routing/app-routing.module';
 import { NavComponent }   from './shared/nav/nav.component';
 import { RegistryListComponent }   from './shared/registrylist/registry-list.component';
 import { ListHeaderComponent }   from './shared/registrylist/list-header.component';
+import { ListScreenComponent }   from './shared/registrylist/list-screen.component';
 import { RegistryFormComponent }   from './shared/registryform/registry-form.component';
 import { FormHeaderComponent }   from './shared/registryform/form-header.component';
+import { FormScreenComponent }   from './shared/registryform/form-screen.component';
 
 import { TimelineComponent }   from './components/timeline/timeline.component';
 import { PerfilComponent }   from './components/perfil/perfil.component';
@@ -33,8 +35,10 @@ import { PlaceComponent }   from './components/places/place.component';
     NavComponent,
     RegistryListComponent,
     ListHeaderComponent,
+    ListScreenComponent,
     RegistryFormComponent,
     FormHeaderComponent,
+    FormScreenComponent,
     TimelineComponent,
     PerfilComponent,
     TeamsComponent,

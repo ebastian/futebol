@@ -16,6 +16,26 @@ var TeamService = (function () {
     TeamService.prototype.getTeams = function () {
         return Promise.resolve(team_mock_1.TEAMS);
     };
+    TeamService.prototype.save = function (team) {
+        if (team.id === undefined || team.id === null) {
+            team.id = team_mock_1.TEAMS[team_mock_1.TEAMS.length - 1].id + 1;
+            team_mock_1.TEAMS.push(team);
+            console.log("Adicionou " + team.id);
+        }
+        else {
+            this.getTeamIndex(team.id).then(function (index) { return team_mock_1.TEAMS[index] = team; });
+        }
+    };
+    TeamService.prototype.getTeam = function (id) {
+        return this.getTeams().then(function (teams) { return teams.find(function (team) { return team.id === id; }); });
+    };
+    TeamService.prototype.getTeamIndex = function (id) {
+        return this.getTeams().then(function (teams) { return teams.findIndex(function (team) { return team.id === id; }); });
+    };
+    TeamService.prototype.remove = function (id) {
+        var _this = this;
+        return this.getTeamIndex(id).then(function (index) { return _this.getTeams().then(function (teams) { return teams.splice(index, 1); }); });
+    };
     TeamService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

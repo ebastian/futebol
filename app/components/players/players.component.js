@@ -39,9 +39,12 @@ var PlayersComponent = (function () {
         var _this = this;
         this.playerService.getPlayers().then(function (players) { return _this.players = players; });
     };
+    PlayersComponent.prototype.delete = function (id) {
+        this.playerService.remove(id);
+    };
     PlayersComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Jogadores'\" [formpath]=\"'player'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"players\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-screen\n      [title]=\"'Jogadores'\"\n      [formpath]=\"'player'\"\n      [columns]=\"columns\"\n      [data]=\"players\"\n      (onDelete)=\"delete($event)\">\n    </eb-list-screen>\n  ",
             providers: [
                 player_service_1.PlayerService
             ]

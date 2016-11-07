@@ -5,7 +5,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <h3>Jogos</h3>
+    <eb-form-screen [title]="'Jogo'" [listpath]="'games'">
+      <br>
+      <br>
+      Não disponível.
+      <br>
+      <br>
+    </eb-form-screen>
   `
 })
 

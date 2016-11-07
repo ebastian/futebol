@@ -5,8 +5,13 @@ import { TeamService } from '../../services/team.service';
 
 @Component({
   template: `
-    <eb-list-header [title]="'Times'" [formpath]="'team'"></eb-list-header>
-    <eb-registry-list [columns]="columns" [data]="teams"></eb-registry-list>
+    <eb-list-screen
+      [title]="'Times'"
+      [formpath]="'team'"
+      [columns]="columns"
+      [data]="teams"
+      (onDelete)="delete($event)">
+    </eb-list-screen>
   `,
   providers: [
     TeamService
@@ -48,6 +53,10 @@ export class TeamsComponent implements OnInit {
 
   getTeams():void {
      this.teamService.getTeams().then(teams => this.teams = teams);
+  }
+
+  delete(id: number):void {
+    this.teamService.remove(id);
   }
 
 }

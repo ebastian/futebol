@@ -39,9 +39,12 @@ var TeamsComponent = (function () {
         var _this = this;
         this.teamService.getTeams().then(function (teams) { return _this.teams = teams; });
     };
+    TeamsComponent.prototype.delete = function (id) {
+        this.teamService.remove(id);
+    };
     TeamsComponent = __decorate([
         core_1.Component({
-            template: "\n    <eb-list-header [title]=\"'Times'\" [formpath]=\"'team'\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"teams\"></eb-registry-list>\n  ",
+            template: "\n    <eb-list-screen\n      [title]=\"'Times'\"\n      [formpath]=\"'team'\"\n      [columns]=\"columns\"\n      [data]=\"teams\"\n      (onDelete)=\"delete($event)\">\n    </eb-list-screen>\n  ",
             providers: [
                 team_service_1.TeamService
             ]

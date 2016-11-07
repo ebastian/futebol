@@ -16,6 +16,26 @@ var PlayerService = (function () {
     PlayerService.prototype.getPlayers = function () {
         return Promise.resolve(player_mock_1.PLAYERS);
     };
+    PlayerService.prototype.save = function (player) {
+        if (player.id === undefined || player.id === null) {
+            player.id = player_mock_1.PLAYERS[player_mock_1.PLAYERS.length - 1].id + 1;
+            player_mock_1.PLAYERS.push(player);
+            console.log("Adicionou " + player.id);
+        }
+        else {
+            this.getPlayerIndex(player.id).then(function (index) { return player_mock_1.PLAYERS[index] = player; });
+        }
+    };
+    PlayerService.prototype.getPlayer = function (id) {
+        return this.getPlayers().then(function (players) { return players.find(function (player) { return player.id === id; }); });
+    };
+    PlayerService.prototype.getPlayerIndex = function (id) {
+        return this.getPlayers().then(function (players) { return players.findIndex(function (player) { return player.id === id; }); });
+    };
+    PlayerService.prototype.remove = function (id) {
+        var _this = this;
+        return this.getPlayerIndex(id).then(function (index) { return _this.getPlayers().then(function (players) { return players.splice(index, 1); }); });
+    };
     PlayerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

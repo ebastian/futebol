@@ -5,8 +5,13 @@ import { PlaceService } from '../../services/place.service';
 
 @Component({
   template: `
-    <eb-list-header [title]="'Estabelecimentos'" [formpath]="'place'"></eb-list-header>
-    <eb-registry-list [columns]="columns" [data]="places"></eb-registry-list>
+    <eb-list-screen
+      [title]="'Estabelecimentos'"
+      [columns]="columns"
+      [data]="places"
+      [formpath]="'place'"
+      (onDelete)="delete($event)">
+    </eb-list-screen>
   `,
   providers: [
     PlaceService
@@ -25,6 +30,10 @@ export class PlacesComponent implements OnInit {
     {
       field: "name",
       description: "Nome"
+    },
+    {
+      field: "description",
+      description: "Descrição"
     },
     {
       field: "address",
@@ -48,5 +57,9 @@ export class PlacesComponent implements OnInit {
 
   getPlaces():void {
      this.placeService.getPlaces().then(places => this.places = places);
+  }
+
+  delete(id: number):void {
+    this.placeService.remove(id);
   }
 }

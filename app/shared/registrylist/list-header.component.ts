@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   template: `
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
           <div class="navbar-header">
             <div class="navbar-brand">{{title}}</div>

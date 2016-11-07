@@ -16,6 +16,26 @@ var PlaceService = (function () {
     PlaceService.prototype.getPlaces = function () {
         return Promise.resolve(place_mock_1.PLACES);
     };
+    PlaceService.prototype.save = function (place) {
+        if (place.id === undefined || place.id === null) {
+            place.id = place_mock_1.PLACES[place_mock_1.PLACES.length - 1].id + 1;
+            place_mock_1.PLACES.push(place);
+            console.log("Adicionou " + place.id);
+        }
+        else {
+            this.getPlaceIndex(place.id).then(function (index) { return place_mock_1.PLACES[index] = place; });
+        }
+    };
+    PlaceService.prototype.getPlace = function (id) {
+        return this.getPlaces().then(function (places) { return places.find(function (place) { return place.id === id; }); });
+    };
+    PlaceService.prototype.getPlaceIndex = function (id) {
+        return this.getPlaces().then(function (places) { return places.findIndex(function (place) { return place.id === id; }); });
+    };
+    PlaceService.prototype.remove = function (id) {
+        var _this = this;
+        return this.getPlaceIndex(id).then(function (index) { return _this.getPlaces().then(function (places) { return places.splice(index, 1); }); });
+    };
     PlaceService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

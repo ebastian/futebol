@@ -5,8 +5,13 @@ import { PlayerService } from '../../services/player.service';
 
 @Component({
   template: `
-    <eb-list-header [title]="'Jogadores'" [formpath]="'player'"></eb-list-header>
-    <eb-registry-list [columns]="columns" [data]="players"></eb-registry-list>
+    <eb-list-screen
+      [title]="'Jogadores'"
+      [formpath]="'player'"
+      [columns]="columns"
+      [data]="players"
+      (onDelete)="delete($event)">
+    </eb-list-screen>
   `,
   providers: [
     PlayerService
@@ -46,5 +51,9 @@ export class PlayersComponent implements OnInit {
 
   getPlayers():void {
      this.playerService.getPlayers().then(players => this.players = players);
+  }
+
+  delete(id: number):void {
+    this.playerService.remove(id);
   }
 }

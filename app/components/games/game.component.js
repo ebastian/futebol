@@ -25,7 +25,7 @@ var GameComponent = (function () {
     };
     GameComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>Jogos</h3>\n  "
+            template: "\n    <eb-form-screen [title]=\"'Jogo'\" [listpath]=\"'games'\">\n      <br>\n      <br>\n      N\u00E3o dispon\u00EDvel.\n      <br>\n      <br>\n    </eb-form-screen>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], GameComponent);

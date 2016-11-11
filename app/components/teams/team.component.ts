@@ -39,7 +39,7 @@ export class TeamComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(!isNaN(id)) {
-        this.teamService.getTeam(id).then(team => this.team = team);
+        this.teamService.getItem(id).then(team => this.team = team as Team);
       }
     });
   }

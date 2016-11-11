@@ -31,7 +31,7 @@ export class PlayerComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(!isNaN(id)) {
-        this.playerService.getPlayer(id).then(player => this.player = player);
+        this.playerService.getItem(id).then(player => this.player = player as Player);
       }
     });
   }

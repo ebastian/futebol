@@ -31,6 +31,7 @@ import { Entity } from "../entity/entity";
           </tr>
         </table>
       </div>
+
       <nav aria-label="...">
         <ul class="pagination">
           <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -78,7 +79,7 @@ export class RegistryListComponent implements OnInit {
   @Output()
   onDelete = new EventEmitter();
 
-  selectedRegistry = undefined;
+  selectedRegistry: Entity = undefined;
 
   constructor(
       private router: Router,
@@ -95,17 +96,17 @@ export class RegistryListComponent implements OnInit {
     }
   }
 
-  selectRegistry(event, reg: Object):void {
-    console.log("select " + reg["id"]);
+  selectRegistry(event, reg: Entity):void {
     this.selectedRegistry = reg;
   }
 
-  edit(event, reg: Object):void {
+  edit(event, reg: Entity):void {
+    console.log(reg.id);
     this.selectRegistry(event, reg);
-    this.router.navigate([this.formpath + "/" + reg["id"]]);
+    this.router.navigate([this.formpath + "/" + reg.id]);
   }
 
   delete(event):void {
-    this.onDelete.next(this.selectedRegistry["id"]);
+    this.onDelete.next(this.selectedRegistry.id);
   }
 }

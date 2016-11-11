@@ -1,27 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Inject, Component, AfterContentInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ListScreenComponent } from '../../shared/registrylist/list-screen.component';
 
 import { Team } from '../../entities/team';
 import { TeamService } from '../../services/team.service';
 
 @Component({
-  template: `
-    <eb-list-screen
-      [title]="'Times'"
-      [formpath]="'team'"
-      [columns]="columns"
-      [data]="teams"
-      (onDelete)="delete($event)">
-    </eb-list-screen>
-  `,
+  templateUrl: 'app/shared/registrylist/list-screen.template.html',
   providers: [
     TeamService
   ]
 })
 
-export class TeamsComponent implements OnInit {
+export class TeamsComponent extends ListScreenComponent implements AfterContentInit  {
 
-  teams: Team[];
-
+  title="Times";
+  formpath="team";
   columns = [
     {
       field: "id",
@@ -42,21 +37,10 @@ export class TeamsComponent implements OnInit {
   ];
 
   constructor(
-    private teamService:TeamService
+    @Inject(Router) router: Router,
+    @Inject(TeamService) teamService:TeamService
   ) {
-
-  }
-
-  ngOnInit():void {
-    this.getTeams();
-  }
-
-  getTeams():void {
-     this.teamService.getTeams().then(teams => this.teams = teams);
-  }
-
-  delete(id: number):void {
-    this.teamService.remove(id);
+     super(router, teamService);
   }
 
 }

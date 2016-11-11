@@ -14,9 +14,7 @@ var ListHeaderComponent = (function () {
     function ListHeaderComponent(router) {
         this.router = router;
     }
-    ListHeaderComponent.prototype.ngOnInit = function () {
-        console.log(this.formpath);
-    };
+    ListHeaderComponent.prototype.ngOnInit = function () { };
     ListHeaderComponent.prototype.add = function () {
         if (this.formpath != null && this.formpath != undefined && this.formpath != '') {
             this.router.navigate([this.formpath]);

@@ -23,7 +23,7 @@ var PlaceComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             if (!isNaN(id)) {
-                _this.placeService.getPlace(id).then(function (place) { return _this.place = place; });
+                _this.placeService.getItem(id).then(function (place) { return _this.place = place; });
             }
         });
     };

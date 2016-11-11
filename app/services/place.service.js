@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,38 +14,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var generic_service_1 = require('../shared/service/generic-service');
 var place_mock_1 = require('./place.mock');
-var PlaceService = (function () {
+var PlaceService = (function (_super) {
+    __extends(PlaceService, _super);
     function PlaceService() {
+        _super.apply(this, arguments);
+        this.data = place_mock_1.PLACES;
     }
-    PlaceService.prototype.getPlaces = function () {
-        return Promise.resolve(place_mock_1.PLACES);
-    };
-    PlaceService.prototype.save = function (place) {
-        if (place.id === undefined || place.id === null) {
-            place.id = place_mock_1.PLACES[place_mock_1.PLACES.length - 1].id + 1;
-            place_mock_1.PLACES.push(place);
-            console.log("Adicionou " + place.id);
-        }
-        else {
-            this.getPlaceIndex(place.id).then(function (index) { return place_mock_1.PLACES[index] = place; });
-        }
-    };
-    PlaceService.prototype.getPlace = function (id) {
-        return this.getPlaces().then(function (places) { return places.find(function (place) { return place.id === id; }); });
-    };
-    PlaceService.prototype.getPlaceIndex = function (id) {
-        return this.getPlaces().then(function (places) { return places.findIndex(function (place) { return place.id === id; }); });
-    };
     PlaceService.prototype.remove = function (id) {
-        var _this = this;
-        return this.getPlaceIndex(id).then(function (index) { return _this.getPlaces().then(function (places) { return places.splice(index, 1); }); });
+        //fazer algo antes de remover
+        return _super.prototype.remove.call(this, id);
     };
     PlaceService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], PlaceService);
     return PlaceService;
-}());
+}(generic_service_1.GenericService));
 exports.PlaceService = PlaceService;
 //# sourceMappingURL=place.service.js.map

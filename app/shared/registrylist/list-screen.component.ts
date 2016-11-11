@@ -1,57 +1,45 @@
-import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
+import { Component, OnInit, EventEmitter, Input, Output, ViewChild, AfterContentInit } from "@angular/core";
 import { Router } from '@angular/router';
+
+import { ProgressBarComponent } from '../../shared/progressbar/progressbar.component';
 
 import { Entity } from "../entity/entity";
 
+import { GenericService } from '../../shared/service/generic-service';
+
 @Component({
   selector: "eb-list-screen",
-  template: `
-    <eb-list-header [title]="title" [formpath]="formpath"></eb-list-header>
-    <eb-registry-list [columns]="columns" [data]="data"  [formpath]="formpath" (onDelete)="delete($event)"></eb-registry-list>
-    <div *ngIf="selectedRegistry !== undefined" class="modal fade" id="removeConfirmationModal" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Confirmar remoção</h4>
-          </div>
-          <div class="modal-body">
-            <p>Deseja remover o registro {{selectedRegistry?.id}}?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="delete($event)">Sim</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `
+  templateUrl: 'app/shared/registrylist/list-screen.template.html'
 })
 
-export class ListScreenComponent implements OnInit {
+export class ListScreenComponent implements OnInit, AfterContentInit  {
+
+  @ViewChild('pb')
+  protected pb: ProgressBarComponent;
 
   @Input()
-  title: string = '';
+  protected title: string = '';
 
   @Input()
-  data = [];
+  protected data = [];
 
   @Input()
-  columns = [];
+  protected columns = [];
 
   @Input()
-  formpath: string = '';
+  protected formpath: string = '';
 
   @Output()
   onDelete = new EventEmitter();
 
-  selectedRegistry = undefined;
+  protected selectedRegistry = undefined;
 
   constructor(
-      private router: Router,
+      protected router: Router,
+      protected service: GenericService
   ) { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     if(this.columns == null || this.columns == undefined || this.columns.length < 1) {
       this.columns = [
         {
@@ -62,16 +50,24 @@ export class ListScreenComponent implements OnInit {
     }
   }
 
-  selectRegistry(reg: Object):void {
-    console.log("select " + reg["id"]);
+  ngAfterContentInit():void {
+    this.getItens();
+  }
+
+  getItens():void {
+    this.pb.show();
+    this.service.getItens().then(data => this.data = data).then(() => this.pb.hide());
+  }
+
+  selectRegistry(reg: Object): void {
     this.selectedRegistry = reg;
   }
 
-  edit(event, reg: Object):void {
+  edit(event, reg: Object): void {
     this.router.navigate([this.formpath + "/" + reg["id"]]);
   }
 
-  delete(id: number):void {
-    this.onDelete.next(id);
+  delete(id: number): void {
+    this.service.remove(id);
   }
 }

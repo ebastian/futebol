@@ -23,7 +23,7 @@ var TeamComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             if (!isNaN(id)) {
-                _this.teamService.getTeam(id).then(function (team) { return _this.team = team; });
+                _this.teamService.getItem(id).then(function (team) { return _this.team = team; });
             }
         });
     };

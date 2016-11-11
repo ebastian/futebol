@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
+var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./routing/app-routing.module');
 var nav_component_1 = require('./shared/nav/nav.component');
+var progressbar_component_1 = require('./shared/progressbar/progressbar.component');
 var registry_list_component_1 = require('./shared/registrylist/registry-list.component');
 var list_header_component_1 = require('./shared/registrylist/list-header.component');
 var list_screen_component_1 = require('./shared/registrylist/list-screen.component');
@@ -38,11 +40,13 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                app_routing_module_1.AppRoutingModule
+                app_routing_module_1.AppRoutingModule,
+                ng2_bs3_modal_1.Ng2Bs3ModalModule
             ],
             declarations: [
                 app_component_1.AppComponent,
                 nav_component_1.NavComponent,
+                progressbar_component_1.ProgressBarComponent,
                 registry_list_component_1.RegistryListComponent,
                 list_header_component_1.ListHeaderComponent,
                 list_screen_component_1.ListScreenComponent,

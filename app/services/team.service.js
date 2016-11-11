@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,38 +14,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var generic_service_1 = require('../shared/service/generic-service');
 var team_mock_1 = require('./team.mock');
-var TeamService = (function () {
+var TeamService = (function (_super) {
+    __extends(TeamService, _super);
     function TeamService() {
+        _super.apply(this, arguments);
+        this.data = team_mock_1.TEAMS;
     }
-    TeamService.prototype.getTeams = function () {
-        return Promise.resolve(team_mock_1.TEAMS);
-    };
-    TeamService.prototype.save = function (team) {
-        if (team.id === undefined || team.id === null) {
-            team.id = team_mock_1.TEAMS[team_mock_1.TEAMS.length - 1].id + 1;
-            team_mock_1.TEAMS.push(team);
-            console.log("Adicionou " + team.id);
-        }
-        else {
-            this.getTeamIndex(team.id).then(function (index) { return team_mock_1.TEAMS[index] = team; });
-        }
-    };
-    TeamService.prototype.getTeam = function (id) {
-        return this.getTeams().then(function (teams) { return teams.find(function (team) { return team.id === id; }); });
-    };
-    TeamService.prototype.getTeamIndex = function (id) {
-        return this.getTeams().then(function (teams) { return teams.findIndex(function (team) { return team.id === id; }); });
-    };
-    TeamService.prototype.remove = function (id) {
-        var _this = this;
-        return this.getTeamIndex(id).then(function (index) { return _this.getTeams().then(function (teams) { return teams.splice(index, 1); }); });
-    };
     TeamService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], TeamService);
     return TeamService;
-}());
+}(generic_service_1.GenericService));
 exports.TeamService = TeamService;
 //# sourceMappingURL=team.service.js.map

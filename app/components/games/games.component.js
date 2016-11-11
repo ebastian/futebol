@@ -14,7 +14,7 @@ var GamesComponent = (function () {
     }
     GamesComponent = __decorate([
         core_1.Component({
-            template: "\n    <h3>Jogos</h3>\n  "
+            templateUrl: 'app/components/games/games.template.html'
         }), 
         __metadata('design:paramtypes', [])
     ], GamesComponent);

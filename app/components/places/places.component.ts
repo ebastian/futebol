@@ -1,27 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Inject, Component, AfterContentInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ListScreenComponent } from '../../shared/registrylist/list-screen.component';
 
 import { Place } from '../../entities/place';
 import { PlaceService } from '../../services/place.service';
 
 @Component({
-  template: `
-    <eb-list-screen
-      [title]="'Estabelecimentos'"
-      [columns]="columns"
-      [data]="places"
-      [formpath]="'place'"
-      (onDelete)="delete($event)">
-    </eb-list-screen>
-  `,
+  templateUrl: 'app/shared/registrylist/list-screen.template.html',
   providers: [
     PlaceService
   ]
 })
 
-export class PlacesComponent implements OnInit {
+export class PlacesComponent extends ListScreenComponent implements AfterContentInit  {
 
-  places: Place[];
-
+  title="Estabelecimentos";
+  formpath="place";
   columns = [
     {
       field: "id",
@@ -46,20 +41,10 @@ export class PlacesComponent implements OnInit {
   ];
 
   constructor(
-    private placeService:PlaceService
+    @Inject(Router) router: Router,
+    @Inject(PlaceService) placeService:PlaceService
   ) {
-
+     super(router, placeService);
   }
 
-  ngOnInit():void {
-    this.getPlaces();
-  }
-
-  getPlaces():void {
-     this.placeService.getPlaces().then(places => this.places = places);
-  }
-
-  delete(id: number):void {
-    this.placeService.remove(id);
-  }
 }

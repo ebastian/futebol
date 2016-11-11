@@ -10,9 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require('@angular/router');
+var progressbar_component_1 = require('../../shared/progressbar/progressbar.component');
+var generic_service_1 = require('../../shared/service/generic-service');
 var ListScreenComponent = (function () {
-    function ListScreenComponent(router) {
+    function ListScreenComponent(router, service) {
         this.router = router;
+        this.service = service;
         this.title = '';
         this.data = [];
         this.columns = [];
@@ -30,16 +33,27 @@ var ListScreenComponent = (function () {
             ];
         }
     };
+    ListScreenComponent.prototype.ngAfterContentInit = function () {
+        this.getItens();
+    };
+    ListScreenComponent.prototype.getItens = function () {
+        var _this = this;
+        this.pb.show();
+        this.service.getItens().then(function (data) { return _this.data = data; }).then(function () { return _this.pb.hide(); });
+    };
     ListScreenComponent.prototype.selectRegistry = function (reg) {
-        console.log("select " + reg["id"]);
         this.selectedRegistry = reg;
     };
     ListScreenComponent.prototype.edit = function (event, reg) {
         this.router.navigate([this.formpath + "/" + reg["id"]]);
     };
     ListScreenComponent.prototype.delete = function (id) {
-        this.onDelete.next(id);
+        this.service.remove(id);
     };
+    __decorate([
+        core_1.ViewChild('pb'), 
+        __metadata('design:type', progressbar_component_1.ProgressBarComponent)
+    ], ListScreenComponent.prototype, "pb", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
@@ -63,9 +77,9 @@ var ListScreenComponent = (function () {
     ListScreenComponent = __decorate([
         core_1.Component({
             selector: "eb-list-screen",
-            template: "\n    <eb-list-header [title]=\"title\" [formpath]=\"formpath\"></eb-list-header>\n    <eb-registry-list [columns]=\"columns\" [data]=\"data\"  [formpath]=\"formpath\" (onDelete)=\"delete($event)\"></eb-registry-list>\n    <div *ngIf=\"selectedRegistry !== undefined\" class=\"modal fade\" id=\"removeConfirmationModal\" role=\"dialog\">\n      <div class=\"modal-dialog\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n            <h4 class=\"modal-title\">Confirmar remo\u00E7\u00E3o</h4>\n          </div>\n          <div class=\"modal-body\">\n            <p>Deseja remover o registro {{selectedRegistry?.id}}?</p>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" (click)=\"delete($event)\">Sim</button>\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">N\u00E3o</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  "
+            templateUrl: 'app/shared/registrylist/list-screen.template.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, generic_service_1.GenericService])
     ], ListScreenComponent);
     return ListScreenComponent;
 }());

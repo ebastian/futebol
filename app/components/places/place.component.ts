@@ -43,7 +43,7 @@ export class PlaceComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(!isNaN(id)) {
-        this.placeService.getPlace(id).then(place => this.place = place);
+        this.placeService.getItem(id).then(place => this.place = place as Place);
       }
     });
   }

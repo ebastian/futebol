@@ -49,9 +49,7 @@ export class ListHeaderComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit():void {
-    console.log(this.formpath);
-  }
+  ngOnInit():void { }
 
   add():void {
     if(this.formpath != null && this.formpath != undefined && this.formpath != '') {

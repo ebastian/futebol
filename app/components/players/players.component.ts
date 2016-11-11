@@ -1,27 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Inject, Component, AfterContentInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ListScreenComponent } from '../../shared/registrylist/list-screen.component';
 
 import { Player } from '../../entities/player';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
-  template: `
-    <eb-list-screen
-      [title]="'Jogadores'"
-      [formpath]="'player'"
-      [columns]="columns"
-      [data]="players"
-      (onDelete)="delete($event)">
-    </eb-list-screen>
-  `,
+  templateUrl: 'app/shared/registrylist/list-screen.template.html',
   providers: [
     PlayerService
   ]
 })
 
-export class PlayersComponent implements OnInit {
+export class PlayersComponent extends ListScreenComponent implements AfterContentInit  {
 
-  players: Player[];
-
+  title="Jogares";
+  formpath="player";
   columns = [
     {
       field: "id",
@@ -42,18 +37,9 @@ export class PlayersComponent implements OnInit {
   ];
 
   constructor(
-    private playerService:PlayerService
-  ) { }
-
-  ngOnInit():void {
-    this.getPlayers();
-  }
-
-  getPlayers():void {
-     this.playerService.getPlayers().then(players => this.players = players);
-  }
-
-  delete(id: number):void {
-    this.playerService.remove(id);
+    @Inject(Router) router: Router,
+    @Inject(PlayerService) playerService:PlayerService
+  ) {
+     super(router, playerService);
   }
 }

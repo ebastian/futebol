@@ -23,7 +23,7 @@ var PlayerComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             if (!isNaN(id)) {
-                _this.playerService.getPlayer(id).then(function (player) { return _this.player = player; });
+                _this.playerService.getItem(id).then(function (player) { return _this.player = player; });
             }
         });
     };

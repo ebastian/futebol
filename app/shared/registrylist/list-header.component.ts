@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="collapse navbar-collapse">
-          <div class="navbar-header">
+          <div class="navbar-header" style="width: 300px">
             <div class="navbar-brand">{{title}}</div>
-            <div class="navbar-brand" style="width: 50px"></div>
           </div>
           <form class="navbar-form navbar-left">
             <div class="form-group">

@@ -11,18 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var GenericService = (function () {
     function GenericService() {
-        this.data = [];
+        this.id = 'GenericService';
     }
     GenericService.prototype.getItensFast = function () {
         return Promise.resolve(this.data);
     };
     GenericService.prototype.getItens = function () {
         var _this = this;
-        return new Promise(function (resolve) { return setTimeout(resolve, Math.floor(Math.random() * 2000)); }).then(function () { return _this.getItensFast(); });
+        return new Promise(function (resolve) { return setTimeout(resolve, Math.floor(Math.random() * 1000)); }).then(function () { return _this.getItensFast(); });
     };
     GenericService.prototype.save = function (item) {
         var _this = this;
+        console.log('genericservice save ' + JSON.stringify(item));
         if (item.id === undefined || item.id === null) {
+            console.log(">>>>" + this.data);
             item.id = this.data[this.data.length - 1].id + 1;
             this.data.push(item);
             console.log("Adicionou " + item.id);
@@ -32,6 +34,7 @@ var GenericService = (function () {
         }
     };
     GenericService.prototype.getItem = function (id) {
+        console.log('getItem ' + id);
         return this.getItens().then(function (items) { return items.find(function (item) { return item.id === id; }); });
     };
     GenericService.prototype.getItemIndex = function (id) {
@@ -39,6 +42,7 @@ var GenericService = (function () {
     };
     GenericService.prototype.remove = function (id) {
         var _this = this;
+        console.log('GenericService delete ' + id);
         return this.getItemIndex(id).then(function (index) { return _this.getItens().then(function (items) { return items.splice(index, 1); }); });
     };
     GenericService = __decorate([

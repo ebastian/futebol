@@ -24,7 +24,7 @@ var PlayersComponent = (function (_super) {
     __extends(PlayersComponent, _super);
     function PlayersComponent(router, playerService) {
         _super.call(this, router, playerService);
-        this.title = "Jogares";
+        this.title = "Jogadores";
         this.formpath = "player";
         this.columns = [
             {

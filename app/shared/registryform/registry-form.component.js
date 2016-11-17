@@ -10,14 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 //import { Router } from '@angular/router';
+var entity_1 = require("../entity/entity");
 var RegistryFormComponent = (function () {
     function RegistryFormComponent() {
+        this.registry = new entity_1.Entity();
         this.onSave = new core_1.EventEmitter();
         this.onDelete = new core_1.EventEmitter();
         this.onCancel = new core_1.EventEmitter();
+        this.busy = false;
     }
-    //ngOnInit():void { }
     RegistryFormComponent.prototype.save = function () {
+        console.log("registryform save " + JSON.stringify(this.registry));
         this.onSave.next();
     };
     RegistryFormComponent.prototype.delete = function () {
@@ -27,9 +30,8 @@ var RegistryFormComponent = (function () {
         this.onCancel.next();
     };
     __decorate([
-        //implements OnInit {
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', entity_1.Entity)
     ], RegistryFormComponent.prototype, "registry", void 0);
     __decorate([
         core_1.Output(), 
@@ -45,8 +47,9 @@ var RegistryFormComponent = (function () {
     ], RegistryFormComponent.prototype, "onCancel", void 0);
     RegistryFormComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'eb-registry-form',
-            template: "\n    <form>\n      <ng-content></ng-content>\n      <div class=\"form-group col-md-12\">\n        <button class=\"btn btn-success\" type=\"button\" (click)=save()>Salvar</button>\n        <button class=\"btn btn-danger\" type=\"button\" data-toggle=\"modal\" data-target=\"#removeConfirmationModal\">Deletar</button>\n        <button class=\"btn\" type=\"button\" (click)=cancel()>Cancelar</button>\n      </div>\n    </form>\n    <div *ngIf=\"selectedRegistry !== undefined\" class=\"modal fade\" id=\"removeConfirmationModal\" role=\"dialog\">\n      <div class=\"modal-dialog\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n            <h4 class=\"modal-title\">Confirmar remo\u00E7\u00E3o</h4>\n          </div>\n          <div class=\"modal-body\">\n            <p>Deseja remover o registro {{registry?.id}}?</p>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" (click)=\"delete($event)\">Sim</button>\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">N\u00E3o</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  "
+            template: "\n    <form>\n      <ng-content *ngIf=\"!busy\"></ng-content>\n      <div class=\"container-fluid\" *ngIf=\"busy\">\n        <div class=\"row\" >\n          <div class=\"col-md-6 col-md-offset-3\">\n            Carregando...\n            <div class=\"progress\">\n              <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"45\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 100%\">\n                <span class=\"sr-only\">Carregando...</span>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"form-group col-md-12\">\n        <button class=\"btn btn-success\" type=\"button\" (click)=save()>Salvar</button>\n        <button class=\"btn btn-danger\" type=\"button\" data-toggle=\"modal\" data-target=\"#removeConfirmationModal\" *ngIf=\"registry.id != undefined\">Deletar</button>\n        <button class=\"btn\" type=\"button\" (click)=cancel()>Cancelar</button>\n      </div>\n    </form>\n    <div class=\"modal fade\" id=\"removeConfirmationModal\" role=\"dialog\">\n      <div class=\"modal-dialog\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n            <h4 class=\"modal-title\">Confirmar remo\u00E7\u00E3o</h4>\n          </div>\n          <div class=\"modal-body\">\n            <p>Deseja remover o registro {{registry?.id}}?</p>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" (click)=\"delete($event)\">Sim</button>\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">N\u00E3o</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], RegistryFormComponent);

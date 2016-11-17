@@ -14,8 +14,10 @@ import { GenericService } from '../../shared/service/generic-service';
 
 export class ListScreenComponent implements OnInit, AfterContentInit  {
 
+  /*
   @ViewChild('pb')
   protected pb: ProgressBarComponent;
+  */
 
   @Input()
   protected title: string = '';
@@ -29,6 +31,8 @@ export class ListScreenComponent implements OnInit, AfterContentInit  {
   @Input()
   protected formpath: string = '';
 
+  busy: boolean = false;
+
   @Output()
   onDelete = new EventEmitter();
 
@@ -40,6 +44,7 @@ export class ListScreenComponent implements OnInit, AfterContentInit  {
   ) { }
 
   ngOnInit(): void {
+    console.log("ListScreenComponent " + this.service.id);
     if(this.columns == null || this.columns == undefined || this.columns.length < 1) {
       this.columns = [
         {
@@ -55,8 +60,10 @@ export class ListScreenComponent implements OnInit, AfterContentInit  {
   }
 
   getItens():void {
-    this.pb.show();
-    this.service.getItens().then(data => this.data = data).then(() => this.pb.hide());
+    this.busy = true;
+    this.service.getItens().then(data => this.data = data).then(() => this.busy = false);
+    //this.pb.show();
+    //this.service.getItens().then(data => this.data = data).then(() => this.pb.hide());
   }
 
   selectRegistry(reg: Object): void {
@@ -68,6 +75,7 @@ export class ListScreenComponent implements OnInit, AfterContentInit  {
   }
 
   delete(id: number): void {
+    console.log('list-screen delete ' + id);
     this.service.remove(id);
   }
 }

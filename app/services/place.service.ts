@@ -8,10 +8,17 @@ import { PLACES } from './place.mock';
 @Injectable()
 export class PlaceService extends GenericService {
 
+  id = 'PlaceService';
+
   data = PLACES;
 
-  public remove(id: number): Promise<Place[]> {
-    //fazer algo antes de remover
-    return super.remove(id);
+  public remove(id: number): Promise<Place> {
+    console.log('not deletin places ' + id);
+    return null;
+  }
+
+  public save(item:Place):void {
+    console.log('super.save' + JSON.stringify(item));
+    super.save(item);
   }
 }

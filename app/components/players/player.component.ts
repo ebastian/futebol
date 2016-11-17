@@ -1,46 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { Inject, Component, OnInit, AfterContentInit } from '@angular/core';
+import { ActivatedRoute }   from '@angular/router';
+import { Router } from '@angular/router';
+
+import { FormScreenComponent } from '../../shared/registryform/form-screen.component';
 
 import { Player } from '../../entities/player';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
   template: `
-    <eb-form-screen [title]="'Jogador'" [listpath]="'players'" [registry]="player" (onSave)="save()" (onDelete)="delete()">
+    <!--<eb-form-screen [title]="'Jogador'" [listpath]="'players'" [registry]="player" (onSave)="save()" (onDelete)="delete()">-->
+    <eb-form-header [title]="'Jogador'" [listpath]="'players'"></eb-form-header>
+    <eb-registry-form [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
       <div class="form-group">
         <label for="inputName">Nome</label>
-        <input id="inputName" class="form-control" placeholder="nome" required="" autofocus="" [(ngModel)]="player.name">
+        <input id="inputName" class="form-control" placeholder="nome" required="" autofocus="" [(ngModel)]="registry.name">
       </div>
-    </eb-form-screen>
+    </eb-registry-form>
+    <!--</eb-form-screen>-->
   `,
   providers: [
     PlayerService
   ]
 })
 
-export class PlayerComponent implements OnInit {
-
-  player: Player = new Player();
+export class PlayerComponent extends FormScreenComponent {
 
   constructor(
-    private playerService:PlayerService,
-    private route: ActivatedRoute,
-  ) {  }
-
-  ngOnInit():void {
-    this.route.params.forEach((params: Params) => {
-      let id = +params['id'];
-      if(!isNaN(id)) {
-        this.playerService.getItem(id).then(player => this.player = player as Player);
-      }
-    });
+    @Inject(ActivatedRoute) route: ActivatedRoute,
+    @Inject(Router) router: Router,
+    @Inject(PlayerService) playerService:PlayerService
+  ) {
+    super(route, router, playerService);
+    this.registry = new Player();
+    this.listpath = 'players';
   }
 
-  save():void {
-    this.playerService.save(this.player);
-  }
-
-  delete():void {
-    this.playerService.remove(this.player.id);
-  }
 }

@@ -9,16 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require('@angular/router');
+var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
+var generic_service_1 = require("../../shared/service/generic-service");
+var entity_1 = require("../entity/entity");
 var FormScreenComponent = (function () {
-    function FormScreenComponent(router) {
+    function FormScreenComponent(route, router, service) {
+        this.route = route;
         this.router = router;
+        this.service = service;
+        this.registry = new entity_1.Entity();
         this.onSave = new core_1.EventEmitter();
         this.onDelete = new core_1.EventEmitter();
     }
-    FormScreenComponent.prototype.ngOnInit = function () {
+    FormScreenComponent.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        console.log("FormScreenComponent " + this.service.id);
+        this.route.params.forEach(function (params) {
+            var id = +params['id'];
+            if (!isNaN(id)) {
+                console.log('ngOnInit - getItem ' + id);
+                _this.service.getItem(id).then(function (registry) { return _this.registry = registry; }).then(function () { return console.log(">> " + JSON.stringify(_this.registry)); });
+            }
+        });
     };
     FormScreenComponent.prototype.save = function () {
+        console.log("formscreen save" + JSON.stringify(this.registry));
+        this.service.save(this.registry);
         this.onSave.next();
         this.goBack();
     };
@@ -37,38 +54,26 @@ var FormScreenComponent = (function () {
             console.log('Especify the listpath property');
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], FormScreenComponent.prototype, "listpath", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], FormScreenComponent.prototype, "title", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], FormScreenComponent.prototype, "registry", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], FormScreenComponent.prototype, "formpath", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], FormScreenComponent.prototype, "onSave", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], FormScreenComponent.prototype, "onDelete", void 0);
-    FormScreenComponent = __decorate([
-        core_1.Component({
-            selector: "eb-form-screen",
-            template: "\n    <eb-form-header [title]=\"title\" [listpath]=\"listpath\" [registry]=\"registry\"></eb-form-header>\n    <eb-registry-form (onSave)=\"save($event)\" (onDelete)=\"delete($event)\" (onCancel)=\"cancel($event)\">\n      <ng-content></ng-content>\n    </eb-registry-form>\n  "
-        }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], FormScreenComponent);
     return FormScreenComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], FormScreenComponent.prototype, "onSave", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], FormScreenComponent.prototype, "onDelete", void 0);
+FormScreenComponent = __decorate([
+    core_1.Component({
+        template: '<h1>Form Screen</h1>',
+        providers: [
+            generic_service_1.GenericService
+        ]
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_2.Router,
+        generic_service_1.GenericService])
+], FormScreenComponent);
 exports.FormScreenComponent = FormScreenComponent;
 //# sourceMappingURL=form-screen.component.js.map

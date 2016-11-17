@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var entity_1 = require("../entity/entity");
 var FormHeaderComponent = (function () {
     function FormHeaderComponent(router) {
         this.router = router;
+        this.registry = new entity_1.Entity();
     }
     FormHeaderComponent.prototype.ngOnInit = function () {
     };
@@ -33,7 +35,7 @@ var FormHeaderComponent = (function () {
     ], FormHeaderComponent.prototype, "title", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', entity_1.Entity)
     ], FormHeaderComponent.prototype, "registry", void 0);
     __decorate([
         core_1.Input(), 
@@ -42,7 +44,7 @@ var FormHeaderComponent = (function () {
     FormHeaderComponent = __decorate([
         core_1.Component({
             selector: "eb-form-header",
-            template: "\n    <nav class=\"navbar navbar-default\">\n      <div class=\"container-fluid\">\n        <div class=\"collapse navbar-collapse\">\n          <div class=\"navbar-header\">\n            <div class=\"navbar-brand\">\n              <span *ngIf=\"registry.id == null || registry.id == undefined\">Incluindo</span>\n              <span *ngIf=\"registry.id !== null && registry.id != undefined\">Editando</span>\n              <span>{{title}}</span>\n              <span *ngIf=\"registry.id !== null && registry.id != undefined\">({{registry.id}})</span>\n            </div>\n            <div class=\"navbar-brand\" style=\"width: 50px\"></div>\n          </div>\n          <ul class=\"nav nav-pills navbar-right\">\n            <li><div class=\"navbar-text\" (click)=\"list()\">Lista</div></li>\n            <li><div class=\"navbar-text\" (click)=\"help()\">Ajuda</div></li>\n          </ul>\n        </div>\n      </div>\n    </nav>\n  "
+            template: "\n    <nav class=\"navbar navbar-default\">\n      <div class=\"container-fluid\">\n        <div class=\"collapse navbar-collapse\">\n          <div class=\"navbar-header\">\n            <div class=\"navbar-brand\">\n              <!--<span *ngIf=\"registry.id == null || registry.id == undefined\">Incluindo</span>\n              <span *ngIf=\"registry.id !== null && registry.id != undefined\">Editando</span>-->\n              <span>{{title}}</span>\n              <!--<span *ngIf=\"registry.id !== null && registry.id != undefined\">({{registry.id}})</span>-->\n            </div>\n            <div class=\"navbar-brand\" style=\"width: 50px\"></div>\n          </div>\n          <ul class=\"nav nav-pills navbar-right\">\n            <li><div class=\"navbar-text\" (click)=\"list()\">Lista</div></li>\n            <li><div class=\"navbar-text\" (click)=\"help()\">Ajuda</div></li>\n          </ul>\n        </div>\n      </div>\n    </nav>\n  "
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], FormHeaderComponent);

@@ -8,5 +8,13 @@ import { TEAMS } from './team.mock';
 @Injectable()
 export class TeamService extends GenericService {
 
+  id = 'TeamService';
+
   data = TEAMS;
+
+  public remove(id: number): Promise<Team> {
+    console.log('super delete ' + id);
+    return super.remove(id);
+  }
+
 }

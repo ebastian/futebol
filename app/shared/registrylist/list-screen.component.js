@@ -10,20 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require('@angular/router');
-var progressbar_component_1 = require('../../shared/progressbar/progressbar.component');
 var generic_service_1 = require('../../shared/service/generic-service');
 var ListScreenComponent = (function () {
     function ListScreenComponent(router, service) {
         this.router = router;
         this.service = service;
+        /*
+        @ViewChild('pb')
+        protected pb: ProgressBarComponent;
+        */
         this.title = '';
         this.data = [];
         this.columns = [];
         this.formpath = '';
+        this.busy = false;
         this.onDelete = new core_1.EventEmitter();
         this.selectedRegistry = undefined;
     }
     ListScreenComponent.prototype.ngOnInit = function () {
+        console.log("ListScreenComponent " + this.service.id);
         if (this.columns == null || this.columns == undefined || this.columns.length < 1) {
             this.columns = [
                 {
@@ -38,8 +43,10 @@ var ListScreenComponent = (function () {
     };
     ListScreenComponent.prototype.getItens = function () {
         var _this = this;
-        this.pb.show();
-        this.service.getItens().then(function (data) { return _this.data = data; }).then(function () { return _this.pb.hide(); });
+        this.busy = true;
+        this.service.getItens().then(function (data) { return _this.data = data; }).then(function () { return _this.busy = false; });
+        //this.pb.show();
+        //this.service.getItens().then(data => this.data = data).then(() => this.pb.hide());
     };
     ListScreenComponent.prototype.selectRegistry = function (reg) {
         this.selectedRegistry = reg;
@@ -48,12 +55,9 @@ var ListScreenComponent = (function () {
         this.router.navigate([this.formpath + "/" + reg["id"]]);
     };
     ListScreenComponent.prototype.delete = function (id) {
+        console.log('list-screen delete ' + id);
         this.service.remove(id);
     };
-    __decorate([
-        core_1.ViewChild('pb'), 
-        __metadata('design:type', progressbar_component_1.ProgressBarComponent)
-    ], ListScreenComponent.prototype, "pb", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)

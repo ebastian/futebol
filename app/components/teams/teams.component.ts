@@ -1,4 +1,4 @@
-import { Inject, Component, AfterContentInit } from '@angular/core';
+import { Inject, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ListScreenComponent } from '../../shared/registrylist/list-screen.component';
@@ -13,7 +13,7 @@ import { TeamService } from '../../services/team.service';
   ]
 })
 
-export class TeamsComponent extends ListScreenComponent implements AfterContentInit  {
+export class TeamsComponent extends ListScreenComponent {
 
   title="Times";
   formpath="team";

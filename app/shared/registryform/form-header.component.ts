@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Entity } from "../entity/entity";
+
 @Component({
   selector: "eb-form-header",
   template: `
@@ -9,10 +11,10 @@ import { Router } from '@angular/router';
         <div class="collapse navbar-collapse">
           <div class="navbar-header">
             <div class="navbar-brand">
-              <span *ngIf="registry.id == null || registry.id == undefined">Incluindo</span>
-              <span *ngIf="registry.id !== null && registry.id != undefined">Editando</span>
+              <!--<span *ngIf="registry.id == null || registry.id == undefined">Incluindo</span>
+              <span *ngIf="registry.id !== null && registry.id != undefined">Editando</span>-->
               <span>{{title}}</span>
-              <span *ngIf="registry.id !== null && registry.id != undefined">({{registry.id}})</span>
+              <!--<span *ngIf="registry.id !== null && registry.id != undefined">({{registry.id}})</span>-->
             </div>
             <div class="navbar-brand" style="width: 50px"></div>
           </div>
@@ -32,7 +34,7 @@ export class FormHeaderComponent implements OnInit {
   title: string;
 
   @Input()
-  registry: Object;
+  registry: Entity = new Entity();
 
   @Input()
   listpath: string;

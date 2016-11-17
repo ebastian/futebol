@@ -20,8 +20,13 @@ var TeamService = (function (_super) {
     __extends(TeamService, _super);
     function TeamService() {
         _super.apply(this, arguments);
+        this.id = 'TeamService';
         this.data = team_mock_1.TEAMS;
     }
+    TeamService.prototype.remove = function (id) {
+        console.log('super delete ' + id);
+        return _super.prototype.remove.call(this, id);
+    };
     TeamService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

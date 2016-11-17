@@ -15,27 +15,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var generic_service_1 = require('../shared/service/generic-service');
-var place_mock_1 = require('./place.mock');
-var PlaceService = (function (_super) {
-    __extends(PlaceService, _super);
-    function PlaceService() {
+var GameService = (function (_super) {
+    __extends(GameService, _super);
+    function GameService() {
         _super.apply(this, arguments);
-        this.id = 'PlaceService';
-        this.data = place_mock_1.PLACES;
+        this.id = "GameService";
+        this.data = [];
     }
-    PlaceService.prototype.remove = function (id) {
-        console.log('not deletin places ' + id);
-        return null;
-    };
-    PlaceService.prototype.save = function (item) {
-        console.log('super.save' + JSON.stringify(item));
-        _super.prototype.save.call(this, item);
-    };
-    PlaceService = __decorate([
+    GameService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], PlaceService);
-    return PlaceService;
+    ], GameService);
+    return GameService;
 }(generic_service_1.GenericService));
-exports.PlaceService = PlaceService;
-//# sourceMappingURL=place.service.js.map
+exports.GameService = GameService;
+//# sourceMappingURL=game.service.js.map

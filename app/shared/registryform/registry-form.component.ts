@@ -1,18 +1,33 @@
 import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
 //import { Router } from '@angular/router';
 
+import { Entity } from "../entity/entity";
+
 @Component({
+  moduleId: module.id,
   selector: 'eb-registry-form',
   template: `
     <form>
-      <ng-content></ng-content>
+      <ng-content *ngIf="!busy"></ng-content>
+      <div class="container-fluid" *ngIf="busy">
+        <div class="row" >
+          <div class="col-md-6 col-md-offset-3">
+            Carregando...
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only">Carregando...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="form-group col-md-12">
         <button class="btn btn-success" type="button" (click)=save()>Salvar</button>
-        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#removeConfirmationModal">Deletar</button>
+        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#removeConfirmationModal" *ngIf="registry.id != undefined">Deletar</button>
         <button class="btn" type="button" (click)=cancel()>Cancelar</button>
       </div>
     </form>
-    <div *ngIf="selectedRegistry !== undefined" class="modal fade" id="removeConfirmationModal" role="dialog">
+    <div class="modal fade" id="removeConfirmationModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -32,10 +47,10 @@ import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
   `
 })
 
-export class RegistryFormComponent {//implements OnInit {
+export class RegistryFormComponent {
 
   @Input()
-  registry: Object;
+  registry: Entity = new Entity();
 
   @Output()
   onSave = new EventEmitter();
@@ -46,13 +61,14 @@ export class RegistryFormComponent {//implements OnInit {
   @Output()
   onCancel = new EventEmitter();
 
+  busy: boolean = false;
+
   constructor(
     //private router: Router
   ) { }
 
-  //ngOnInit():void { }
-
   save():void {
+    console.log("registryform save " + JSON.stringify(this.registry));
     this.onSave.next();
   }
 

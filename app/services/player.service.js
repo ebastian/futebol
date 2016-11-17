@@ -20,8 +20,13 @@ var PlayerService = (function (_super) {
     __extends(PlayerService, _super);
     function PlayerService() {
         _super.apply(this, arguments);
+        this.id = "PlayerService";
         this.data = player_mock_1.PLAYERS;
     }
+    PlayerService.prototype.remove = function (id) {
+        console.log('super delete ' + id);
+        return _super.prototype.remove.call(this, id);
+    };
     PlayerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

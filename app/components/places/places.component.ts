@@ -1,4 +1,4 @@
-import { Inject, Component, AfterContentInit } from '@angular/core';
+import { Inject, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ListScreenComponent } from '../../shared/registrylist/list-screen.component';
@@ -13,7 +13,7 @@ import { PlaceService } from '../../services/place.service';
   ]
 })
 
-export class PlacesComponent extends ListScreenComponent implements AfterContentInit  {
+export class PlacesComponent extends ListScreenComponent  {
 
   title="Estabelecimentos";
   formpath="place";

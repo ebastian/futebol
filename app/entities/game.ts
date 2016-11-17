@@ -1,9 +1,6 @@
-
 import { Entity } from '../shared/entity/entity';
 
-export class Team extends Entity {
+export class Game extends Entity {
   name: string;
-  description: string;
   type: string;
-  players: string;
 }

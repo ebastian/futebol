@@ -1,47 +1,48 @@
-import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
+import { Component, OnInit, EventEmitter, Input, Output, ViewChild, AfterContentInit } from "@angular/core";
+import { ActivatedRoute, Params }   from '@angular/router';
 import { Router } from '@angular/router';
+
+import { GenericService } from '../../shared/service/generic-service';
 
 import { Entity } from "../entity/entity";
 
 @Component({
-  selector: "eb-form-screen",
-  template: `
-    <eb-form-header [title]="title" [listpath]="listpath" [registry]="registry"></eb-form-header>
-    <eb-registry-form (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
-      <ng-content></ng-content>
-    </eb-registry-form>
-  `
+  template: '<h1>Form Screen</h1>',
+  providers: [
+    GenericService
+  ]
 })
 
-export class FormScreenComponent implements OnInit {
+export class FormScreenComponent implements AfterContentInit {
 
-  @Input()
-  listpath;
+  protected listpath: string;
 
-  @Input()
-  title;
+  protected registry: Entity = new Entity();
 
-  @Input()
-  registry: Object;
+  @Output() onSave = new EventEmitter();
 
-  @Input()
-  formpath: string;
-
-  @Output()
-  onSave = new EventEmitter();
-
-  @Output()
-  onDelete = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
 
   constructor(
-    private router: Router
+      protected route: ActivatedRoute,
+      protected router: Router,
+      protected service: GenericService
   ) { }
 
-  ngOnInit():void {
-
+  ngAfterContentInit():void {
+    console.log("FormScreenComponent " + this.service.id);
+    this.route.params.forEach((params: Params) => {
+      let id = +params['id'];
+      if(!isNaN(id)) {
+        console.log('ngOnInit - getItem ' + id);
+        this.service.getItem(id).then(registry => this.registry = registry).then(() => console.log(">> " + JSON.stringify(this.registry)));
+      }
+    });
   }
 
   save():void {
+    console.log("formscreen save" + JSON.stringify(this.registry));
+    this.service.save(this.registry);
     this.onSave.next();
     this.goBack();
   }

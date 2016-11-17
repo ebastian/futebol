@@ -1,5 +1,17 @@
 <eb-list-header [title]="title" [formpath]="formpath"></eb-list-header>
-<eb-registry-list [columns]="columns" [data]="data"  [formpath]="formpath" (onDelete)="delete($event)"></eb-registry-list>
+<eb-registry-list [columns]="columns" [data]="data"  [formpath]="formpath" (onDelete)="delete($event)" *ngIf="!busy"></eb-registry-list>
+<div class="container-fluid" *ngIf="busy">
+  <div class="row" >
+    <div class="col-md-6 col-md-offset-3">
+      Carregando...
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+          <span class="sr-only">Carregando...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div *ngIf="selectedRegistry !== undefined" class="modal fade" id="removeConfirmationModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -17,4 +29,3 @@
     </div>
   </div>
 </div>
-<eb-progress-bar #pb></eb-progress-bar>

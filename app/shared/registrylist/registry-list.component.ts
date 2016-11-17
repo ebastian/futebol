@@ -8,7 +8,7 @@ import { Entity } from "../entity/entity";
   template: `
     <div>
       <div class="panel panel-default">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" *ngIf="data.length > 0">
           <tr>
             <th *ngFor="let column of columns">{{column.description}}</th>
             <th>Ações</th>
@@ -30,6 +30,9 @@ import { Entity } from "../entity/entity";
             </td>
           </tr>
         </table>
+        <div *ngIf="data.length === 0">
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;Nenhum registro encontrado.<br><br>
+        </div>
       </div>
 
       <nav aria-label="...">
@@ -101,7 +104,6 @@ export class RegistryListComponent implements OnInit {
   }
 
   edit(event, reg: Entity):void {
-    console.log(reg.id);
     this.selectRegistry(event, reg);
     this.router.navigate([this.formpath + "/" + reg.id]);
   }

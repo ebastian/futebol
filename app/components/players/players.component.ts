@@ -1,4 +1,4 @@
-import { Inject, Component, AfterContentInit } from '@angular/core';
+import { Inject, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ListScreenComponent } from '../../shared/registrylist/list-screen.component';
@@ -13,9 +13,9 @@ import { PlayerService } from '../../services/player.service';
   ]
 })
 
-export class PlayersComponent extends ListScreenComponent implements AfterContentInit  {
+export class PlayersComponent extends ListScreenComponent  {
 
-  title="Jogares";
+  title="Jogadores";
   formpath="player";
   columns = [
     {
@@ -42,4 +42,5 @@ export class PlayersComponent extends ListScreenComponent implements AfterConten
   ) {
      super(router, playerService);
   }
+
 }

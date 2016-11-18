@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var GenericService = (function () {
     function GenericService() {
         this.id = 'GenericService';
@@ -19,7 +19,7 @@ var GenericService = (function () {
     };
     GenericService.prototype.getItens = function () {
         var _this = this;
-        return new Promise(function (resolve) { return setTimeout(resolve, Math.floor(3000 + Math.random() * 1000)); }).then(function () { return _this.getItensFast(); });
+        return new Promise(function (resolve) { return setTimeout(resolve, Math.floor(Math.random() * 1000)); }).then(function () { return _this.getItensFast(); });
     };
     GenericService.prototype.save = function (item) {
         var _this = this;
@@ -47,11 +47,11 @@ var GenericService = (function () {
         console.log('GenericService delete ' + id);
         return this.getItemIndex(id).then(function (index) { return _this.getItens().then(function (items) { return items.splice(index, 1); }); });
     };
+    GenericService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], GenericService);
     return GenericService;
 }());
-GenericService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], GenericService);
 exports.GenericService = GenericService;
 //# sourceMappingURL=generic-service.js.map

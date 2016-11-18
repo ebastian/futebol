@@ -15,7 +15,7 @@ var NavComponent = (function () {
     NavComponent = __decorate([
         core_1.Component({
             selector: 'eb-nav',
-            template: "\n    <nav class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/timeline\">Futeaboleiro</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/perfil\">Perfil</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/players\">Jogadores</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/teams\">Times</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/games\">Jogos</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/places\">Estabelecimentos</a>\n        </div>\n      </div>\n    </nav>\n  "
+            template: "\n    <nav class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/timeline\">Futeboleiro</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/perfil\">Perfil</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/players\">Jogadores</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/teams\">Times</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/games\">Jogos</a>\n          <a class=\"navbar-brand\" href=\"#\" routerLink=\"/places\">Estabelecimentos</a>\n        </div>\n      </div>\n    </nav>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], NavComponent);

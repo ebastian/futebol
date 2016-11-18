@@ -31,7 +31,7 @@ var GameComponent = (function (_super) {
     }
     GameComponent = __decorate([
         core_1.Component({
-            template: "\n    <!--<eb-form-screen [title]=\"'Jogo'\" [listpath]=\"'games'\">-->\n    <eb-form-header [title]=\"'Jogo'\" [listpath]=\"'games'\"></eb-form-header>\n    <eb-registry-form [registry]=\"registry\" (onSave)=\"save($event)\" (onDelete)=\"delete($event)\" (onCancel)=\"cancel($event)\">\n      <br>\n      <br>\n      N\u00E3o dispon\u00EDvel.\n      <br>\n      <br>\n    </eb-registry-form>\n  ",
+            template: "\n    <!--<eb-form-screen [title]=\"'Jogo'\" [listpath]=\"'games'\">-->\n    <eb-form-header [title]=\"'Jogo'\" [listpath]=\"'games'\"></eb-form-header>\n    <eb-registry-form #regForm [registry]=\"registry\" (onSave)=\"save($event)\" (onDelete)=\"delete($event)\" (onCancel)=\"cancel($event)\">\n    <div class=\"form-group\">\n      <label for=\"inputName\">Nome</label>\n      <input id=\"inputName\" class=\"form-control\" placeholder=\"nome\" required=\"\" autofocus=\"\" [(ngModel)]=\"registry.name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"inputDescription\">Descri\u00E7\u00E3o</label>\n      <input id=\"inputDescription\" class=\"form-control\" placeholder=\"descri\u00E7\u00E3o\" required=\"\" autofocus=\"\" [(ngModel)]=\"registry.description\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"inputType\">Tipo</label>\n      <input id=\"inputType\" class=\"form-control\" placeholder=\"tipo\" required=\"\" autofocus=\"\" [(ngModel)]=\"registry.type\">\n    </div>\n    </eb-registry-form>\n  ",
             providers: [
                 game_service_1.GameService
             ]

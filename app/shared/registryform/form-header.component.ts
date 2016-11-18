@@ -14,7 +14,7 @@ import { Entity } from "../entity/entity";
               <!--<span *ngIf="registry.id == null || registry.id == undefined">Incluindo</span>
               <span *ngIf="registry.id !== null && registry.id != undefined">Editando</span>-->
               <span>{{title}}</span>
-              <!--<span *ngIf="registry.id !== null && registry.id != undefined">({{registry.id}})</span>-->
+              <span>({{registry?.id}})</span>
             </div>
             <div class="navbar-brand" style="width: 50px"></div>
           </div>

@@ -10,11 +10,11 @@ export class PlaceService extends GenericService {
 
   id = 'PlaceService';
 
-  data = PLACES;
+  data: Place[] = PLACES;
 
   public remove(id: number): Promise<Place> {
-    console.log('not deletin places ' + id);
-    return null;
+    console.log('super.remove ' + id);
+    return super.remove(id);
   }
 
   public save(item:Place):void {

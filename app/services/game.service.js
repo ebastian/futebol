@@ -15,12 +15,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var generic_service_1 = require('../shared/service/generic-service');
+var game_mock_1 = require('./game.mock');
 var GameService = (function (_super) {
     __extends(GameService, _super);
     function GameService() {
         _super.apply(this, arguments);
         this.id = "GameService";
-        this.data = [];
+        this.data = game_mock_1.GAMES;
     }
     GameService = __decorate([
         core_1.Injectable(), 

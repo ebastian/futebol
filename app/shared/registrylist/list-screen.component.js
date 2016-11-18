@@ -80,8 +80,9 @@ var ListScreenComponent = (function () {
     ], ListScreenComponent.prototype, "onDelete", void 0);
     ListScreenComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: "eb-list-screen",
-            templateUrl: 'app/shared/registrylist/list-screen.template.html'
+            templateUrl: 'list-screen.template.html'
         }), 
         __metadata('design:paramtypes', [router_1.Router, generic_service_1.GenericService])
     ], ListScreenComponent);

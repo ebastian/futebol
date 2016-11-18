@@ -8,8 +8,9 @@ import { Entity } from "../entity/entity";
 import { GenericService } from '../../shared/service/generic-service';
 
 @Component({
+  moduleId: module.id,
   selector: "eb-list-screen",
-  templateUrl: 'app/shared/registrylist/list-screen.template.html'
+  templateUrl: 'list-screen.template.html'
 })
 
 export class ListScreenComponent implements OnInit, AfterContentInit  {

@@ -24,8 +24,8 @@ var PlaceService = (function (_super) {
         this.data = place_mock_1.PLACES;
     }
     PlaceService.prototype.remove = function (id) {
-        console.log('not deletin places ' + id);
-        return null;
+        console.log('super.remove ' + id);
+        return _super.prototype.remove.call(this, id);
     };
     PlaceService.prototype.save = function (item) {
         console.log('super.save' + JSON.stringify(item));

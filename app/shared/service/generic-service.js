@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var GenericService = (function () {
     function GenericService() {
         this.id = 'GenericService';
+        this.data = [];
     }
     GenericService.prototype.getItensFast = function () {
         return Promise.resolve(this.data);
@@ -24,10 +25,11 @@ var GenericService = (function () {
         var _this = this;
         console.log('genericservice save ' + JSON.stringify(item));
         if (item.id === undefined || item.id === null) {
-            console.log(">>>>" + this.data);
-            item.id = this.data[this.data.length - 1].id + 1;
+            console.log("list: " + this.data);
+            console.log("to add " + JSON.stringify(item));
+            item.id = ((this.data != null && this.data.length > 0) ? (this.data[this.data.length - 1].id + 1) : 1);
             this.data.push(item);
-            console.log("Adicionou " + item.id);
+            console.log("added " + JSON.stringify(item));
         }
         else {
             this.getItemIndex(item.id).then(function (index) { return _this.data[index] = item; });

@@ -11,12 +11,19 @@ import { GameService } from '../../services/game.service';
   template: `
     <!--<eb-form-screen [title]="'Jogo'" [listpath]="'games'">-->
     <eb-form-header [title]="'Jogo'" [listpath]="'games'"></eb-form-header>
-    <eb-registry-form [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
-      <br>
-      <br>
-      Não disponível.
-      <br>
-      <br>
+    <eb-registry-form #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
+    <div class="form-group">
+      <label for="inputName">Nome</label>
+      <input id="inputName" class="form-control" placeholder="nome" required="" autofocus="" [(ngModel)]="registry.name">
+    </div>
+    <div class="form-group">
+      <label for="inputDescription">Descrição</label>
+      <input id="inputDescription" class="form-control" placeholder="descrição" required="" autofocus="" [(ngModel)]="registry.description">
+    </div>
+    <div class="form-group">
+      <label for="inputType">Tipo</label>
+      <input id="inputType" class="form-control" placeholder="tipo" required="" autofocus="" [(ngModel)]="registry.type">
+    </div>
     </eb-registry-form>
   `,
   providers: [

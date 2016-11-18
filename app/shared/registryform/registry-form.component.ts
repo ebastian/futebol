@@ -7,26 +7,30 @@ import { Entity } from "../entity/entity";
   moduleId: module.id,
   selector: 'eb-registry-form',
   template: `
-    <form>
-      <ng-content *ngIf="!busy"></ng-content>
       <div class="container-fluid" *ngIf="busy">
-        <div class="row" >
-          <div class="col-md-6 col-md-offset-3">
-            Carregando...
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                <span class="sr-only">Carregando...</span>
+        <div class="teste">
+          <div class="row">
+            <div>
+              Carregando...
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                  <span class="sr-only">Carregando...</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="form-group col-md-12">
-        <button class="btn btn-success" type="button" (click)=save()>Salvar</button>
-        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#removeConfirmationModal" *ngIf="registry.id != undefined">Deletar</button>
-        <button class="btn" type="button" (click)=cancel()>Cancelar</button>
-      </div>
-    </form>
+      <form>
+        <div [class.divdisabled]="busy">
+          <ng-content></ng-content>
+          <div class="form-group col-md-12">
+            <button class="btn btn-success" type="button" (click)=save()>Salvar</button>
+            <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#removeConfirmationModal" *ngIf="registry.id != undefined">Deletar</button>
+            <button class="btn" type="button" (click)=cancel()>Cancelar</button>
+          </div>
+        </div>
+      </form>
     <div class="modal fade" id="removeConfirmationModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -44,7 +48,22 @@ import { Entity } from "../entity/entity";
         </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .divdisabled
+    {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .teste {
+      position: absolute;
+      left: 43%;
+      top: 200px;
+      width: 250px;
+      z-index: 1;
+      background-color: #ffffff;
+    }
+  `]
 })
 
 export class RegistryFormComponent {
@@ -61,7 +80,7 @@ export class RegistryFormComponent {
   @Output()
   onCancel = new EventEmitter();
 
-  busy: boolean = false;
+  public busy: boolean = false;
 
   constructor(
     //private router: Router

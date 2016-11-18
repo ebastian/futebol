@@ -11,7 +11,7 @@ import { TeamService } from '../../services/team.service';
   template: `
     <!--<eb-form-screen [title]="'Time'" [listpath]="'teams'" [registry]="team" (onSave)="save()" (onDelete)="delete()">-->
     <eb-form-header [title]="'Time'" [listpath]="'teams'"></eb-form-header>
-    <eb-registry-form [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
+    <eb-registry-form  #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
       <div class="form-group col-md-6">
         <label for="inputName">Nome</label>
         <input id="inputName" class="form-control" placeholder="nome" required="" autofocus=""  [(ngModel)]="registry.name">

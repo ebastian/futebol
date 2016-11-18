@@ -11,7 +11,7 @@ import { PlayerService } from '../../services/player.service';
   template: `
     <!--<eb-form-screen [title]="'Jogador'" [listpath]="'players'" [registry]="player" (onSave)="save()" (onDelete)="delete()">-->
     <eb-form-header [title]="'Jogador'" [listpath]="'players'"></eb-form-header>
-    <eb-registry-form [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
+    <eb-registry-form  #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
       <div class="form-group">
         <label for="inputName">Nome</label>
         <input id="inputName" class="form-control" placeholder="nome" required="" autofocus="" [(ngModel)]="registry.name">

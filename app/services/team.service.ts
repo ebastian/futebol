@@ -10,7 +10,7 @@ export class TeamService extends GenericService {
 
   id = 'TeamService';
 
-  data = TEAMS;
+  data: Team[] = TEAMS;
 
   public remove(id: number): Promise<Team> {
     console.log('super delete ' + id);

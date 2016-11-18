@@ -10,7 +10,7 @@ import { GameService } from '../../services/game.service';
 @Component({
   template: `
     <!--<eb-form-screen [title]="'Jogo'" [listpath]="'games'">-->
-    <eb-form-header [title]="'Jogo'" [listpath]="'games'"></eb-form-header>
+    <eb-form-header [registry]="registry" [title]="'Jogo'" [listpath]="'games'"></eb-form-header>
     <eb-registry-form #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
     <div class="form-group">
       <label for="inputName">Nome</label>

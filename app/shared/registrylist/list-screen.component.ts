@@ -76,7 +76,8 @@ export class ListScreenComponent implements OnInit, AfterContentInit  {
   }
 
   delete(id: number): void {
+    this.busy = true;
     console.log('list-screen delete ' + id);
-    this.service.remove(id);
+    this.service.remove(id).then(() => this.busy = false);
   }
 }

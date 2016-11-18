@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var router_2 = require("@angular/router");
-var registry_form_component_1 = require("../../shared/registryform/registry-form.component");
-var generic_service_1 = require("../../shared/service/generic-service");
+var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
+var registry_form_component_1 = require('../../shared/registryform/registry-form.component');
+var generic_service_1 = require('../../shared/service/generic-service');
 var entity_1 = require("../entity/entity");
 var FormScreenComponent = (function () {
     function FormScreenComponent(route, router, service) {
@@ -62,30 +62,28 @@ var FormScreenComponent = (function () {
             console.log('Especify the listpath property');
         }
     };
+    __decorate([
+        core_1.ViewChild('regForm'), 
+        __metadata('design:type', registry_form_component_1.RegistryFormComponent)
+    ], FormScreenComponent.prototype, "regForm", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], FormScreenComponent.prototype, "onSave", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], FormScreenComponent.prototype, "onDelete", void 0);
+    FormScreenComponent = __decorate([
+        core_1.Component({
+            template: '<h1>Form Screen</h1>',
+            providers: [
+                generic_service_1.GenericService
+            ]
+        }), 
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_2.Router, generic_service_1.GenericService])
+    ], FormScreenComponent);
     return FormScreenComponent;
 }());
-__decorate([
-    core_1.ViewChild('regForm'),
-    __metadata("design:type", registry_form_component_1.RegistryFormComponent)
-], FormScreenComponent.prototype, "regForm", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], FormScreenComponent.prototype, "onSave", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], FormScreenComponent.prototype, "onDelete", void 0);
-FormScreenComponent = __decorate([
-    core_1.Component({
-        template: '<h1>Form Screen</h1>',
-        providers: [
-            generic_service_1.GenericService
-        ]
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_2.Router,
-        generic_service_1.GenericService])
-], FormScreenComponent);
 exports.FormScreenComponent = FormScreenComponent;
 //# sourceMappingURL=form-screen.component.js.map

@@ -10,7 +10,7 @@ import { PlaceService } from '../../services/place.service';
 @Component({
   template: `
     <!--<eb-form-screen [title]="'Estabelecimento'" [listpath]="'places'"  [registry]="place" (onSave)="save()" (onDelete)="delete()">-->
-    <eb-form-header [title]="'Estabelecimento'" [listpath]="'places'"></eb-form-header>
+    <eb-form-header [registry]="registry" [title]="'Estabelecimento'" [listpath]="'places'"></eb-form-header>
     <eb-registry-form  #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
       <div class="form-group">
         <label for="inputName">Nome</label>

@@ -14,7 +14,7 @@ export class GenericService {
   }
 
   public getItens(): Promise<Entity[]> {
-    return new Promise<Entity[]>(resolve => setTimeout(resolve, Math.floor(Math.random()*1000))).then(() => this.getItensFast());
+    return new Promise<Entity[]>(resolve => setTimeout(resolve, Math.floor(3000+Math.random()*1000))).then(() => this.getItensFast());
   }
 
   public save(item:any):void {

@@ -15,7 +15,7 @@ import { Entity } from "../entity/entity";
           </tr>
           <tr *ngFor="let reg of data" [class.info]="selectedRegistry === reg" (click)="selectRegistry($event, reg)">
             <td *ngFor="let column of columns">{{reg[column.field]}}</td>
-            <td>
+            <td class="text-center">
               <!--
               <button (click)="view($event, reg)">
                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>

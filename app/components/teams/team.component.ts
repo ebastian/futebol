@@ -10,7 +10,7 @@ import { TeamService } from '../../services/team.service';
 @Component({
   template: `
     <!--<eb-form-screen [title]="'Time'" [listpath]="'teams'" [registry]="team" (onSave)="save()" (onDelete)="delete()">-->
-    <eb-form-header [title]="'Time'" [listpath]="'teams'"></eb-form-header>
+    <eb-form-header [registry]="registry" [title]="'Time'" [listpath]="'teams'"></eb-form-header>
     <eb-registry-form  #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
       <div class="form-group col-md-6">
         <label for="inputName">Nome</label>

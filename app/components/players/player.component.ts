@@ -10,7 +10,7 @@ import { PlayerService } from '../../services/player.service';
 @Component({
   template: `
     <!--<eb-form-screen [title]="'Jogador'" [listpath]="'players'" [registry]="player" (onSave)="save()" (onDelete)="delete()">-->
-    <eb-form-header [title]="'Jogador'" [listpath]="'players'"></eb-form-header>
+    <eb-form-header [registry]="registry" [title]="'Jogador'" [listpath]="'players'"></eb-form-header>
     <eb-registry-form  #regForm [registry]="registry" (onSave)="save($event)" (onDelete)="delete($event)" (onCancel)="cancel($event)">
       <div class="form-group">
         <label for="inputName">Nome</label>

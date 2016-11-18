@@ -55,8 +55,10 @@ var ListScreenComponent = (function () {
         this.router.navigate([this.formpath + "/" + reg["id"]]);
     };
     ListScreenComponent.prototype.delete = function (id) {
+        var _this = this;
+        this.busy = true;
         console.log('list-screen delete ' + id);
-        this.service.remove(id);
+        this.service.remove(id).then(function () { return _this.busy = false; });
     };
     __decorate([
         core_1.Input(), 
